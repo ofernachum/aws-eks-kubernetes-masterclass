@@ -82,11 +82,14 @@ kubectl apply -f kube-manifests/
 
 # Verify Pods
 kubectl get pods
+# This will show the list of running pods (the app03 deployment and External DNS)
 
 # Verify Services
 kubectl get svc
 Observation: 
-1. Verify the network lb DNS name
+1. Verify the network lb DNS name:
+<img width="552" height="107" alt="image" src="https://github.com/user-attachments/assets/6e598f74-0d13-48e1-af44-7df0d2a56881" />
+
 
 # Verify AWS Load Balancer Controller pod logs
 kubectl -n kube-system get pods
