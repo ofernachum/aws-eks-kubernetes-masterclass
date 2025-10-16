@@ -10,6 +10,8 @@ description: Learn to use AWS Network Load Balancer TLS with AWS Load Balancer C
 - aws-load-balancer-ssl-negotiation-policy
 - aws-load-balancer-ssl-negotiation-policy
 
+
+
 ## Step-02: Review TLS Annotations
 - **File Name:** `kube-manifests\02-LBC-NLB-LoadBalancer-Service.yml`
 - **Security Policies:** https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies
@@ -20,6 +22,12 @@ description: Learn to use AWS Network Load Balancer TLS with AWS Load Balancer C
     service.beta.kubernetes.io/aws-load-balancer-ssl-negotiation-policy: ELBSecurityPolicy-TLS13-1-2-2021-06
     service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp 
 ```
+### Port, targetPort and Target Group Port (we see in AWS Console):
+The flow here fits the following configuration:
+- Port: 443 (The port the NLB listen to)
+- targetPort: 80 (The port the Pod listen to)
+- AWS Target Group Port: 32162 (Is the port the Worker Node is listening to)
+<img width="401" height="304" alt="image" src="https://github.com/user-attachments/assets/754327cc-7e01-433d-bd72-17d6d08f5668" />
 
 
 ## Step-03: Deploy all kube-manifests
