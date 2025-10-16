@@ -21,7 +21,7 @@ metadata:
     service.beta.kubernetes.io/load-balancer-source-ranges: 0.0.0.0/0  # specifies the CIDRs that are allowed to access the NLB.
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing" # specifies whether the NLB will be internet-facing or internal
 
-    # AWS Resource Tags
+    # AWS Resource Tags 
     service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags: Environment=dev,Team=test
 spec:
   type: LoadBalancer
