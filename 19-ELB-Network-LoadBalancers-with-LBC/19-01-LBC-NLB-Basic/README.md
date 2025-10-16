@@ -79,31 +79,59 @@ spec:
 ```t
 # Deploy kube-manifests
 kubectl apply -f kube-manifests/
-
+```
+```t
 # Verify Pods
 kubectl get pods
 # This will show the list of running pods (the app03 deployment and External DNS)
-
+```
+```t
 # Verify Services
 kubectl get svc
 Observation: 
 1. Verify the network lb DNS name:
+```
 <img width="552" height="107" alt="image" src="https://github.com/user-attachments/assets/6e598f74-0d13-48e1-af44-7df0d2a56881" />
 
-
+```t
 # Verify AWS Load Balancer Controller pod logs
 kubectl -n kube-system get pods
 kubectl -n kube-system logs -f <aws-load-balancer-controller-POD-NAME>
+```
+<img width="501" height="160" alt="image" src="https://github.com/user-attachments/assets/097beb04-82b7-41c9-b77a-72fb8ed3ee5b" />
+<img width="1083" height="52" alt="image" src="https://github.com/user-attachments/assets/e0f1ac6a-e06b-4466-b89c-9ebf9069275a" />
 
+
+
+```t
 # Verify using AWS Mgmt Console
 Go to Services -> EC2 -> Load Balancing -> Load Balancers
 1. Verify Description Tab - DNS Name matching output of "kubectl get svc" External IP
 2. Verify Listeners Tab
+```
+<img width="1124" height="568" alt="image" src="https://github.com/user-attachments/assets/7c86a585-3c37-472f-a703-f4ab21be10e9" />
+- Note: AWS NLB DNS Name should match the one we get in kubectl get svc
+<img width="1072" height="473" alt="image" src="https://github.com/user-attachments/assets/966aa02f-b2e3-43de-a5fb-87f09ab678a5" />
+- These instances are the Worker Nodes
 
+
+```t
 Go to Services -> EC2 -> Load Balancing -> Target Groups
 1. Verify Registered targets
 2. Verify Health Check path
+```
+Note target group exists and the port is the one we see in kubectl get svc which is the NodePort port
+<img width="1018" height="515" alt="image" src="https://github.com/user-attachments/assets/386d1de4-1e93-4dc8-85d5-db3e4a65d643" />
+Also the targets should listen on this port as well:
+<img width="1102" height="565" alt="image" src="https://github.com/user-attachments/assets/ad191579-e5ca-48e8-8eea-0134e83aacfc" />
 
+
+
+
+
+
+
+```t
 # Access Application
 http://<NLB-DNS-NAME>
 ```
