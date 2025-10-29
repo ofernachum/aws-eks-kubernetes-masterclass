@@ -19,7 +19,7 @@ metadata:
 
     # Access Control
     service.beta.kubernetes.io/aws-load-balancer-scheme: "internal"
-    # The VPC CIDR will be used if service.beta.kubernetes.io/aws-load-balancer-scheme is internal
+    # The Current VPC CIDR will be used if service.beta.kubernetes.io/aws-load-balancer-scheme is internal so no need to indicate this explicetly !
     #service.beta.kubernetes.io/load-balancer-source-ranges: 0.0.0.0/0     
 
     # AWS Resource Tags
